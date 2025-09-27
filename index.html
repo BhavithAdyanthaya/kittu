@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday My Love 🎂</title>
+  <title>Happy Birthday My Dear Kittuuuu 🎂</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 </head>
 <body>
-  <div class="container">
-
-    <audio id="bg-music" autoplay loop>
-        <source src="perfect.mp3" type="audio/mpeg">
-    </audio>
-
+  <!-- Intro Screen -->
+  <div id="start-screen" class="container">
     <h1>🎉 Happy Birthday, My Love ❤️ 🎉</h1>
-    <p>Welcome to your birthday treasure hunt! Ready for Clue 1?</p>
+    <p>Tap below to begin your treasure hunt!</p>
+    <button onclick="startExperience()">Tap to Begin 🎂</button>
+  </div>
+
+  <!-- Main Treasure Hunt Content -->
+  <div id="main-content" class="container hidden">
+    <h2>Welcome to your birthday treasure hunt 🎁</h2>
+    <p>Ready for Clue 1?</p>
     
     <button onclick="showClue(1)">Reveal Clue 1</button>
     
@@ -42,7 +47,50 @@
       <a href="YOUR-VIDEO-MESSAGE-LINK" target="_blank">Watch Video</a>
     </div>
   </div>
-  <script src="script.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+
+  <!-- Background Music -->
+  <audio id="bg-music" loop>
+    <source src="perfect.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function launchConfetti() {
+      confetti({
+        particleCount: 150,
+        spread: 80,
+        origin: { y: 0.6 }
+      });
+    }
+
+    function startExperience() {
+      // Hide start screen, show main content
+      document.getElementById("start-screen").style.display = "none";
+      document.getElementById("main-content").classList.remove("hidden");
+      
+      // Play background music
+      const music = document.getElementById("bg-music");
+      music.play();
+
+      // Launch confetti 🎉
+      launchConfetti();
+    }
+
+    function showClue(num) {
+      document.getElementById("clue" + num).classList.remove("hidden");
+      launchConfetti(); // confetti for every new clue
+    }
+  </script>
+
+  <!-- Floating Decorations -->
+<div class="heart" style="left: 10%;">❤️</div>
+<div class="heart" style="left: 30%;">💖</div>
+<div class="heart" style="left: 50%;">💕</div>
+<div class="heart" style="left: 70%;">💞</div>
+
+<div class="balloon" style="left: 20%;">🎈</div>
+<div class="balloon" style="left: 40%;">🎈</div>
+<div class="balloon" style="left: 60%;">🎈</div>
+<div class="balloon" style="left: 80%;">🎈</div>
+
 </body>
 </html>

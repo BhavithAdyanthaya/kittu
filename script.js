@@ -24,3 +24,9 @@ window.addEventListener("load", () => {
   });
 });
 
+function startExperience() {
+  document.getElementById("start-screen").style.display = "none";
+  const music = document.getElementById("bg-music");
+  music.play();
+  launchConfetti();
+}
